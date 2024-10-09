@@ -16,13 +16,29 @@
     <body class="font-sans text-gray-900 antialiased">
         <header class="bg-black p-[40px] text-white text-center text-3xl font-bold">REGISTER</header>
     
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-white">
+        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-10 bg-white">
             <form method="POST" action="{{ route('register') }}">
                 @csrf
+
+                <!-- FirstName -->
+                <div class="relative">
+                    <x-input-label for="firstname" :value="__('FirstName')" />
+                    <x-text-input id="firstname" class="block mt-1 w-full bg-gray-100 border-none focus:ring-0 focus:outline-none" type="text" name="firstname" :value="old('firstname')" required autofocus autocomplete="firstname" />
+                    <div class="absolute inset-x-0 bottom-0 h-0.5 bg-black"></div>
+                    <x-input-error :messages="$errors->get('firstname')" class="mt-2" />
+                </div>
+
+                <!-- LastName -->
+                <div class="relative mt-4">
+                    <x-input-label for="lastname" :value="__('LastName')" />
+                    <x-text-input id="lastname" class="block mt-1 w-full bg-gray-100 border-none focus:ring-0 focus:outline-none" type="text" name="lastname" :value="old('lastname')" required autofocus autocomplete="lastname" />
+                    <div class="absolute inset-x-0 bottom-0 h-0.5 bg-black"></div>
+                    <x-input-error :messages="$errors->get('lastname')" class="mt-2" />
+                </div>
                 
                 <!-- Name -->
-                <div class="relative">
-                    <x-input-label for="name" :value="__('Name')" />
+                <div class="relative mt-4">
+                    <x-input-label for="name" :value="__('Username')" />
                     <x-text-input id="name" class="block mt-1 w-full bg-gray-100 border-none focus:ring-0 focus:outline-none" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
                     <div class="absolute inset-x-0 bottom-0 h-0.5 bg-black"></div>
                     <x-input-error :messages="$errors->get('name')" class="mt-2" />
@@ -79,7 +95,7 @@
                     <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                 </div>
 
-                <div class="flex items-center justify-end mt-4">
+                <div class="flex items-center justify-end mt-4 pb-10">
                     <a class="underline text-sm text-gray-600 hover:text-red-500 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
                         {{ __('Already registered?') }}
                     </a>

@@ -12,6 +12,8 @@ return new class extends Migration
     public function up()
 {
     Schema::table('users', function (Blueprint $table) {
+        $table->date('firstname')->nullable();
+        $table->date('lastname')->nullable();
         $table->date('birthdate')->nullable();
         $table->string('gender')->nullable();
         $table->string('phone_number')->nullable();
